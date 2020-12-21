@@ -63,19 +63,19 @@ ssa_plot <- function(ssa1, ssa2,
                      color_number1 = 1, color_number2 = 2) {
   palet <- ggsci::pal_jama()
   colorPalet <- palet(7)
-  
+
   resids <- resid1:resid2
-  
+
   out <- matrix(ncol = 7, nrow = length(resids))
   # H: AlphaHelix, E: ExtendedConformation(BetaSheet), B or b: Bridge,
   # T: Turn, C or " ": Coil, G: Helix310, I: PiHelix
   colnames(out) <- c("AlphaHelix", "BetaSheet", "Bridge", "Turn",
                      "Coil", "Helix310", "PiHelix")
-  
+
   out1 <- as.data.frame(na.omit(out))
   for(i in resids) {
     perc <- (table(ssa1[i]) / sum(table(ssa1[i])))*100
-    
+
     out1[i, "AlphaHelix"] <- perc["H"]
     out1[i, "BetaSheet"] <- perc["E"]
     out1[i, "Bridge"] <- sum(perc[c("B","b")])
@@ -87,7 +87,7 @@ ssa_plot <- function(ssa1, ssa2,
   out2 <- as.data.frame(na.omit(out))
   for(i in resids) {
     perc <- (table(ssa2[i]) / sum(table(ssa2[i])))*100
-    
+
     out2[i, "AlphaHelix"] <- perc["H"]
     out2[i, "BetaSheet"] <- perc["E"]
     out2[i, "Bridge"] <- sum(perc[c("B","b")])
@@ -95,21 +95,23 @@ ssa_plot <- function(ssa1, ssa2,
     out2[i, "Coil"] <- perc["C"]
     out2[i, "Helix310"] <- perc["G"]
     out2[i, "PiHelix"] <- perc["I"]
-  } 
-  
+  }
+
+  out1 <- out1[resid1:resid2, ]
   out1$resid <- resids
   out1 <- reshape2::melt(out1[1:8], id.var = "resid")
   out1$mut <- name1
-  
+
+  out2 <- out2[resid1:resid2, ]
   out2$resid <- resids
   out2 <- reshape2::melt(out2[1:8], id.var = "resid")
   out2$mut <- name2
-  
+
   out <- rbind(out1, out2)
-  
+
   require(ggplot2)
   require(ggpubr)
-  p1 <- ggplot(out[out$variable == "AlphaHelix",], aes(x = resid, y = value, fill = mut,)) 
+  p1 <- ggplot(out[out$variable == "AlphaHelix",], aes(x = resid, y = value, fill = mut,))
   p1 <- p1 + geom_bar(stat = "identity", position = position_dodge(), width = 0.45)
   if(length(resids) >= 50) {
     p1 <- p1 + scale_x_continuous(breaks = c(resids[1], seq(10, resids[length(resids)], 10), resids[length(resids)]),
@@ -131,8 +133,8 @@ ssa_plot <- function(ssa1, ssa2,
                    legend.text = element_text(size = 15),
                    legend.position = "none",
                    panel.border = element_rect(colour = "gray60", fill = NA, size = .5))
-  
-  p2 <- ggplot(out[out$variable == "BetaSheet",], aes(x = resid, y = value, fill = mut,)) 
+
+  p2 <- ggplot(out[out$variable == "BetaSheet",], aes(x = resid, y = value, fill = mut,))
   p2 <- p2 + geom_bar(stat = "identity", position = position_dodge(), width = 0.45)
   if(length(resids) >= 50) {
     p2 <- p2 + scale_x_continuous(breaks = c(resids[1], seq(10, resids[length(resids)], 10), resids[length(resids)]),
@@ -154,8 +156,8 @@ ssa_plot <- function(ssa1, ssa2,
                    legend.text = element_text(size = 15),
                    legend.position = "none",
                    panel.border = element_rect(colour = "gray60", fill = NA, size = .5))
-  
-  p3 <- ggplot(out[out$variable == "Bridge",], aes(x = resid, y = value, fill = mut,)) 
+
+  p3 <- ggplot(out[out$variable == "Bridge",], aes(x = resid, y = value, fill = mut,))
   p3 <- p3 + geom_bar(stat = "identity", position = position_dodge(), width = 0.45)
   if(length(resids) >= 50) {
     p3 <- p3 + scale_x_continuous(breaks = c(resids[1], seq(10, resids[length(resids)], 10), resids[length(resids)]),
@@ -177,8 +179,8 @@ ssa_plot <- function(ssa1, ssa2,
                    legend.text = element_text(size = 15),
                    legend.position = "none",
                    panel.border = element_rect(colour = "gray60", fill = NA, size = .5))
-  
-  p4 <- ggplot(out[out$variable == "Turn",], aes(x = resid, y = value, fill = mut,)) 
+
+  p4 <- ggplot(out[out$variable == "Turn",], aes(x = resid, y = value, fill = mut,))
   p4 <- p4 + geom_bar(stat = "identity", position = position_dodge(), width = 0.45)
   if(length(resids) >= 50) {
     p4 <- p4 + scale_x_continuous(breaks = c(resids[1], seq(10, resids[length(resids)], 10), resids[length(resids)]),
@@ -200,8 +202,8 @@ ssa_plot <- function(ssa1, ssa2,
                    legend.text = element_text(size = 15),
                    legend.position = "none",
                    panel.border = element_rect(colour = "gray60", fill = NA, size = .5))
-  
-  p5 <- ggplot(out[out$variable == "Coil",], aes(x = resid, y = value, fill = mut,)) 
+
+  p5 <- ggplot(out[out$variable == "Coil",], aes(x = resid, y = value, fill = mut,))
   p5 <- p5 + geom_bar(stat = "identity", position = position_dodge(), width = 0.45)
   if(length(resids) >= 50) {
     p5 <- p5 + scale_x_continuous(breaks = c(resids[1], seq(10, resids[length(resids)], 10), resids[length(resids)]),
@@ -223,8 +225,8 @@ ssa_plot <- function(ssa1, ssa2,
                    legend.text = element_text(size = 15),
                    legend.position = "none",
                    panel.border = element_rect(colour = "gray60", fill = NA, size = .5))
-  
-  p6 <- ggplot(out[out$variable == "Helix310",], aes(x = resid, y = value, fill = mut,)) 
+
+  p6 <- ggplot(out[out$variable == "Helix310",], aes(x = resid, y = value, fill = mut,))
   p6 <- p6 + geom_bar(stat = "identity", position = position_dodge(), width = 0.45)
   if(length(resids) >= 50) {
     p6 <- p6 + scale_x_continuous(breaks = c(resids[1], seq(10, resids[length(resids)], 10), resids[length(resids)]),
@@ -246,8 +248,8 @@ ssa_plot <- function(ssa1, ssa2,
                    legend.text = element_text(size = 15),
                    legend.position = "none",
                    panel.border = element_rect(colour = "gray60", fill = NA, size = .5))
-  
-  p7 <- ggplot(out[out$variable == "PiHelix",], aes(x = resid, y = value, fill = mut,)) 
+
+  p7 <- ggplot(out[out$variable == "PiHelix",], aes(x = resid, y = value, fill = mut,))
   p7 <- p7 + geom_bar(stat = "identity", position = position_dodge(), width = 0.45)
   if(length(resids) >= 50) {
     p7 <- p7 + scale_x_continuous(breaks = c(resids[1], seq(10, resids[length(resids)], 10), resids[length(resids)]),
@@ -269,13 +271,13 @@ ssa_plot <- function(ssa1, ssa2,
                    legend.text = element_text(size = 15),
                    legend.position = "none",
                    panel.border = element_rect(colour = "gray60", fill = NA, size = .5))
-  
+
   p8 <- ggpubr::as_ggplot(ggpubr::get_legend(p1 + theme(legend.position = "top")))
-  
-  
+
+
   fig <- ggarrange(p8, p1, p2, p3, p4, p5, p6, p7, ncol = 1,
                    heights = c(1, rep(5, 7)))
-  
+
   return(annotate_figure(fig, bottom = text_grob("Residue Index", face = "bold", size = 18)))
 }
 
