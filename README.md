@@ -26,12 +26,6 @@ library(ggsci)
 library(reshape2)
 ```
 
-Source the functions to define ssa() and ssa_plot():
-```{r}
-source("functions/ssa.R")
-source("functions/ssa_plot.R")
-```
-
 Read your trajectory files and the related pdb files:
 ```{r}
 pdb_WT <- read.pdb("example/wt.pdb")
