@@ -1,0 +1,15 @@
+Package: ggstride
+Type: Package
+Title: Protein secondary structure analysis and visualization
+Version: 0.1.0
+Author: Umut Gerlevik
+Maintainer: Umut Gerlevik <umut.gerlevik@gmail.com>
+Description: Protein secondary structure analysis (with STRIDE) and visualization (with ggplot2) for trajectories.
+            Two functions are included in this package:
+            ssa() will return a data frame that contains residue identifiers (resname_chain_resid; e.g., MET_A_1) as column names and STRIDE assignments of each residue as each row for each frame of the trajectory.
+            ssa_plot() ill return a plot that contains percentage of secondary structures observed along the trajectories per residue by comparing the two ssa data frames obtained by ssa().
+Imports: ggplot2, ggpubr, ggsci, reshape2, stringi, readr, bio3d, stats
+License: UMUT GERLEVIK, 2020
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
