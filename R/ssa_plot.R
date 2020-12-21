@@ -10,7 +10,7 @@
 #' secondary structures observed along the trajectories per residue by
 #' comparing the two ssa data frames obtained by ssa().
 #'
-#' @param ssa1,ssa2,name1,color_number1,name2,color_number2
+#' @param ssa1,ssa2,name1,name2,resid1,resid2,color_number1,color_number2
 #'
 #' @return plot
 #'
