@@ -37,24 +37,24 @@ Read your trajectory files and the related pdb files:
 pdb_WT <- read.pdb("example/wt.pdb")
 dcd_WT <- read.dcd(trjfile = "example/wt.dcd")
 
-pdb_S50P <- read.pdb("example/S50P_mutant.pdb")
-dcd_S50P <- read.dcd(trjfile = "example/S50P_mutant.dcd")
+pdb_mutant <- read.pdb("example/mutant.pdb")
+dcd_mutant <- read.dcd(trjfile = "example/mutant.dcd")
 ```
 
 Use ssa() to calculate secondary structures:
 ```{r}
 ssa_WT <- ssa(pdb_WT, dcd_WT) # Note: If your trajectory has two parts, you can use rbind: rbind(dcd_WT_r1, dcd_WT_r2).
-ssa_S50P <- ssa(pdb_S50P, dcd_S50P) 
+ssa_mutant <- ssa(pdb_mutant, dcd_mutant) 
 ```
 
 Use ssa_plot() to visualize your results:
 ```{r}
-ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_S50P,
+ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_mutant,
          name1 = "Wild-type", color_number1 = 1,
-         name2 = "Ser50Pro", color_number2 = 2)
+         name2 = "Mutant", color_number2 = 2)
          
 # You can assign the plot to a variable:
-plot_ssa_WT_S50P <- ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_S50P,
+plot_ssa_WT_vs_mutant <- ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_mutant,
                              name1 = "Wild-type", color_number1 = 1,
-                             name2 = "Ser50Pro", color_number2 = 2)
+                             name2 = "Mutant", color_number2 = 2)
 ```
