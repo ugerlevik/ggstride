@@ -266,15 +266,27 @@ ssa_plot <- function(ssa1, ssa2,
   p7 <- p7 + labs(x = "Residue Index", y = "Pi Helix (%)")
   p7 <- p7 + scale_fill_manual(values = colorPalet[c(color_number2, color_number1)])
   p7 <- p7 + theme_minimal()
-  p7 <- p7 + theme(axis.title.x = element_blank(),
-                   axis.title.y = element_text(angle = 90, size = 18, face = "bold"),
-                   axis.ticks = element_line(),
-                   axis.text = element_text(size = 14),
-                   axis.text.x = element_text(angle = 90, size = 12, hjust = 0.5, vjust = 0.5),
-                   legend.title = element_blank(),
-                   legend.text = element_text(size = 15),
-                   legend.position = "none",
-                   panel.border = element_rect(colour = "gray60", fill = NA, size = .5))
+  if(length(resids) >= 50) {
+    p7 <- p7 + theme(axis.title.x = element_blank(),
+                     axis.title.y = element_text(angle = 90, size = 18, face = "bold"),
+                     axis.ticks = element_line(),
+                     axis.text = element_text(size = 14),
+                     axis.text.x = element_text(angle = 90, size = 12, hjust = 0.5, vjust = 0.5),
+                     legend.title = element_blank(),
+                     legend.text = element_text(size = 15),
+                     legend.position = "none",
+                     panel.border = element_rect(colour = "gray60", fill = NA, size = .5))
+  } else {
+    p7 <- p7 + theme(axis.title.x = element_blank(),
+                     axis.title.y = element_text(angle = 90, size = 18, face = "bold"),
+                     axis.ticks = element_line(),
+                     axis.text = element_text(size = 14),
+                     axis.text.x = element_text(angle = 90, size = 18, hjust = 0.5, vjust = 0.5),
+                     legend.title = element_blank(),
+                     legend.text = element_text(size = 15),
+                     legend.position = "none",
+                     panel.border = element_rect(colour = "gray60", fill = NA, size = .5))
+  }
 
   p8 <- ggpubr::as_ggplot(ggpubr::get_legend(p1 + theme(legend.position = "top")))
 
