@@ -53,7 +53,7 @@ ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_mutant,
          color_number1 = 1, color_number2 = 2)
 ```
 
-![](https://github.com/umutgerlevik/ggstride/tree/master/vignettes/ssa_plot_all.png?raw=true)
+![SSA Plot](https://github.com/umutgerlevik/ggstride/blob/master/vignettes/ssa_plot_all.png?raw=true "SSA Plot")
 
 You can assign the plot to a variable:
 ```{r}
@@ -71,7 +71,7 @@ plot_ssa_520_530 <- ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_mutant,
 plot_ssa_520_530
 ```
 
-![](https://github.com/umutgerlevik/ggstride/tree/master/vignettes/ssa_plot_520_530.png?raw=true)
+![SSA Plot Focused](https://github.com/umutgerlevik/ggstride/blob/master/vignettes/ssa_plot_520_530.png?raw=true "SSA Plot Focused")
 
 
 Get the pdf outputs:
