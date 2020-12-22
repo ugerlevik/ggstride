@@ -55,7 +55,7 @@ ssa <- function(pdb, traj, start = 1, last = nrow(traj)) {
   require(bio3d)
 
   tmp <- stri_rand_strings(1, 5)
-  dir.create(paste0("_outputs/stride_", tmp))
+  dir.create(paste0("stride_", tmp))
   out <- matrix(ncol = length(pdb[pdb$calpha]))
   colnames(out) <- paste(pdb$atom$resid[pdb$calpha],
                          pdb$atom$chain[pdb$calpha],
@@ -63,8 +63,8 @@ ssa <- function(pdb, traj, start = 1, last = nrow(traj)) {
   out <- as.data.frame(na.omit(out))
 
   for(i in 1:nrow(traj)) {
-    write.pdb(pdb, file = paste0("_outputs/stride_", tmp, "/", tmp, "_", i, ".pdb"), xyz = traj[i,])
-    res <- suppressWarnings(system(paste0("stride ", "_outputs/stride_", tmp, "/", tmp, "_", i, ".pdb"), intern = TRUE))
+    write.pdb(pdb, file = paste0("stride_", tmp, "/", tmp, "_", i, ".pdb"), xyz = traj[i,])
+    res <- suppressWarnings(system(paste0("stride ", "stride_", tmp, "/", tmp, "_", i, ".pdb"), intern = TRUE))
     res <- read_table(as.character(res[grep("ASG", res)]), col_names = FALSE)[, c(2, 3, 4, 6, 7)]
     out <- rbind(out, res$X6)
   }
@@ -72,7 +72,7 @@ ssa <- function(pdb, traj, start = 1, last = nrow(traj)) {
                          pdb$atom$chain[pdb$calpha],
                          pdb$atom$resno[pdb$calpha], sep = "_")
 
-  unlink(paste0("_outputs/stride_", tmp), recursive = TRUE)
+  unlink(paste0("stride_", tmp), recursive = TRUE)
 
   rownames(out) <- start:last
 

@@ -74,7 +74,9 @@ ssa_plot <- function(ssa1, ssa2,
 
   out1 <- as.data.frame(na.omit(out))
   for(i in resids) {
-    perc <- (table(ssa1[i]) / sum(table(ssa1[i])))*100
+    a <- which(i == as.numeric(gsub('\\D+','', colnames(ssa1))))
+
+    perc <- (table(ssa1[a]) / sum(table(ssa1[a])))*100
 
     out1[i, "AlphaHelix"] <- perc["H"]
     out1[i, "BetaSheet"] <- perc["E"]
@@ -86,7 +88,9 @@ ssa_plot <- function(ssa1, ssa2,
   }
   out2 <- as.data.frame(na.omit(out))
   for(i in resids) {
-    perc <- (table(ssa2[i]) / sum(table(ssa2[i])))*100
+    a <- which(i == as.numeric(gsub('\\D+','', colnames(ssa2))))
+
+    perc <- (table(ssa2[a]) / sum(table(ssa2[a])))*100
 
     out2[i, "AlphaHelix"] <- perc["H"]
     out2[i, "BetaSheet"] <- perc["E"]

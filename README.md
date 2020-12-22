@@ -8,22 +8,25 @@ and STRIDE assignments of each residue as each row for each frame of the traject
 __ssa_plot()__ returns a plot that contains percentage of secondary structures observed along the trajectories per residue 
 by comparing the two ssa data frames obtained by ssa()   
 
-## Requirements:
+## Requirements
 __R packages:__ "stringi", "readr", "bio3d", "ggplot2", "ggpubr", "ggsci", "reshape2"  
 __In system:__ STRIDE (http://webclu.bio.wzw.tum.de/stride/). Stride should be executable in your terminal as "stride".  
 
-## Usage:
-Open your R or RStudio as administrator (or root/sudo) to be able to run "stride" from your system terminal.
+
+## Installation
+You can install ggstride from GitHub with:
+
+```{r}
+# install.packages("devtools")
+devtools::install_github("umutgerlevik/ggstride", build_vignettes = TRUE)
+```
+
+## Usage
 
 Load required libraries to your R session:
 ```{r}
-library(stringi)
-library(readr)
+library(ggstride)
 library(bio3d)
-library(ggplot2)
-library(ggpubr)
-library(ggsci)
-library(reshape2)
 ```
 
 Read your trajectory files and the related pdb files:
@@ -37,18 +40,44 @@ dcd_mutant <- read.dcd(trjfile = "example/mutant.dcd")
 
 Use ssa() to calculate secondary structures:
 ```{r}
-ssa_WT <- ssa(pdb_WT, dcd_WT) # Note: If your trajectory has two parts, you can use rbind: rbind(dcd_WT_r1, dcd_WT_r2).
+# Note: If your trajectory has two or more parts, you can use rbind: rbind(dcd_WT_part1, dcd_WT_part2)
+ssa_WT <- ssa(pdb_WT, dcd_WT)
 ssa_mutant <- ssa(pdb_mutant, dcd_mutant) 
 ```
 
 Use ssa_plot() to visualize your results:
 ```{r}
+# Plot all:
 ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_mutant,
-         name1 = "Wild-type", color_number1 = 1,
-         name2 = "Mutant", color_number2 = 2)
-         
-# You can assign the plot to a variable:
-plot_ssa_WT_vs_mutant <- ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_mutant,
-                             name1 = "Wild-type", color_number1 = 1,
-                             name2 = "Mutant", color_number2 = 2)
+         name1 = "Wild-type",  name2 = "Mutant",
+         color_number1 = 1, color_number2 = 2)
 ```
+
+You can assign the plot to a variable:
+```{r}
+plot_ssa_all <- ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_mutant,
+                         name1 = "Wild-type", color_number1 = 1,
+                         name2 = "Mutant", color_number2 = 2)
+```
+
+Plot with a focus between residues 520 and 530:
+```{r}
+plot_ssa_520_530 <- ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_mutant,
+                             name1 = "Wild-type",  name2 = "Mutant",
+                             resid1 = 520, resid2 = 530,
+                             color_number1 = 1, color_number2 = 3)
+plot_ssa_520_530
+```
+
+Get the pdf outputs:
+```{r}
+pdf("example/ssa_plot_all.pdf", width = 20, height = 20)
+plot_ssa_all
+dev.off()
+
+pdf("example/ssa_plot_520_530.pdf", width = 20, height = 20)
+plot_ssa_520_530
+dev.off()
+```
+
+
