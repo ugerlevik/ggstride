@@ -79,7 +79,7 @@ dev.off()
 ```
 
 ### References
-If you use this package, you should cite the studies below:
+If you use this package, you should also cite the studies below:
 
 STRIDE method (http://webclu.bio.wzw.tum.de/stride/):
 Frishman D, Argos P. Knowledge-based protein secondary structure assignment. Proteins. 1995 Dec;23(4):566-79. doi: 10.1002/prot.340230412. PMID: 8749853.
