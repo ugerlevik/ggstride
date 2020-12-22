@@ -78,7 +78,7 @@ plot_ssa_520_530
 dev.off()
 ```
 
-## Citations
+### References
 ```{r}
 citation("ggstride")
 ```
