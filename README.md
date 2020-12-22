@@ -18,7 +18,7 @@ You can install ggstride from GitHub with:
 
 ```{r}
 # install.packages("devtools")
-devtools::install_github("umutgerlevik/ggstride", build_vignettes = TRUE)
+devtools::install_github("umutgerlevik/ggstride")
 ```
 
 ## Usage

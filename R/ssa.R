@@ -62,9 +62,27 @@ ssa <- function(pdb, traj, start = 1, last = nrow(traj)) {
                          pdb$atom$resno[pdb$calpha], sep = "_")
   out <- as.data.frame(na.omit(out))
 
+  operating_system <- Sys.info()
+  operating_system <- operating_system['sysname']
+
   for(i in 1:nrow(traj)) {
     write.pdb(pdb, file = paste0("stride_", tmp, "/", tmp, "_", i, ".pdb"), xyz = traj[i,])
-    res <- suppressWarnings(system(paste0("stride ", "stride_", tmp, "/", tmp, "_", i, ".pdb"), intern = TRUE))
+
+    if(operating_system == "Windows") {
+      exe <- system.file("stride/stride_WIN.exe", package = "ggstride")
+      res <- suppressWarnings(system(paste0(exe, " stride_", tmp, "/", tmp, "_", i, ".pdb"), intern = TRUE))
+    } if(operating_system == "Linux") {
+      exe <- system.file("stride/stride_LINUXAMD64", package = "ggstride")
+      res <- suppressWarnings(system(paste0(exe, " stride_", tmp, "/", tmp, "_", i, ".pdb"), intern = TRUE))
+    } else {
+      tryCatch({
+        res <- suppressWarnings(system(paste0("stride", " stride_", tmp, "/", tmp, "_", i, ".pdb"), intern = TRUE))
+      },
+      error = function(e) {
+        print("Error: Define 'stride' as an environmental variable!")
+      })
+    }
+
     res <- read_table(as.character(res[grep("ASG", res)]), col_names = FALSE)[, c(2, 3, 4, 6, 7)]
     out <- rbind(out, res$X6)
   }
