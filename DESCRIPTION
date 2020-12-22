@@ -1,8 +1,10 @@
 Package: ggstride
 Type: Package
-Title: Protein secondary structure analysis and visualization
+Title: An R Package for Protein 2D Structure Analysis and Visualization
 Version: 0.1.0
 Author: Umut Gerlevik
+Year: 2020
+URL: https://github.com/ugerlevik/ggstride
 Maintainer: Umut Gerlevik <umut.gerlevik@gmail.com>
 Description: Protein secondary structure analysis (with STRIDE) and visualization (with ggplot2) for trajectories.
             Two functions are included in this package:
