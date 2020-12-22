@@ -31,11 +31,11 @@ library(bio3d)
 
 Read your trajectory files and the related pdb files:
 ```{r}
-pdb_WT <- read.pdb(system.file("example/wt.pdb", package = "ggstride"))
-dcd_WT <- read.dcd(trjfile = system.file("example/wt.dcd", package = "ggstride"))
+pdb_WT <- read.pdb(system.file("extdata/wt.pdb", package = "ggstride"))
+dcd_WT <- read.dcd(trjfile = system.file("extdata/wt.dcd", package = "ggstride"))
 
-pdb_mutant <- read.pdb(system.file("example/mutant.pdb", package = "ggstride"))
-dcd_mutant <- read.dcd(trjfile = system.file("example/mutant.dcd", package = "ggstride"))
+pdb_mutant <- read.pdb(system.file("extdata/mutant.pdb", package = "ggstride"))
+dcd_mutant <- read.dcd(trjfile = system.file("extdata/mutant.dcd", package = "ggstride"))
 ```
 
 Use ssa() to calculate secondary structures:
