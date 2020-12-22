@@ -69,10 +69,10 @@ ssa <- function(pdb, traj, start = 1, last = nrow(traj)) {
     write.pdb(pdb, file = paste0("stride_", tmp, "/", tmp, "_", i, ".pdb"), xyz = traj[i,])
 
     if(operating_system == "Windows") {
-      exe <- system.file("stride/stride_WIN.exe", package = "ggstride")
+      exe <- system.file("inst/bin/stride_WIN.exe", package = "ggstride")
       res <- suppressWarnings(system(paste0(exe, " stride_", tmp, "/", tmp, "_", i, ".pdb"), intern = TRUE))
-    } if(operating_system == "Linux") {
-      exe <- system.file("stride/stride_LINUXAMD64", package = "ggstride")
+    } else if(operating_system == "Linux") {
+      exe <- system.file("inst/bin/stride_LINUXAMD64", package = "ggstride")
       res <- suppressWarnings(system(paste0(exe, " stride_", tmp, "/", tmp, "_", i, ".pdb"), intern = TRUE))
     } else {
       tryCatch({
