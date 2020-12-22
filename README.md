@@ -12,7 +12,7 @@ You can install ggstride from GitHub with:
 
 ```{r}
 # install.packages("devtools")
-devtools::install_github("umutgerlevik/ggstride")
+devtools::install_github("ugerlevik/ggstride")
 ```
 
 ## Usage
