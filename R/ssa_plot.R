@@ -10,14 +10,22 @@
 #' secondary structures observed along the trajectories per residue by
 #' comparing the two ssa data frames obtained by ssa().
 #'
-#' @param ssa1,ssa2,name1,name2,resid1,resid2,color_number1,color_number2
+#' @param ssa1: the ssa data frame calculated for trajectory 1, calculated by ggstride::ssa()
+#' @param ssa2: the ssa data frame calculated for trajectory 2, calculated by ggstride::ssa()
+#' @param name1: assign a name for your trajectory 1
+#' @param name2: assign a name for your trajectory 2
+#' @param resid1: residue id of the first residue of the region you want to visualize
+#' @param resid2: residue id of the last residue of the region you want to visualize
+#' @param color_number1: (between 1 and 7) select a color from jama palette of ggsci for the ssa of trajectory 1
+#' @param color_number2: (between 1 and 7) select a color from jama palette of ggsci for the ssa of trajectory 2
 #'
 #' @return plot
 #'
 #' @examples
-#' ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_S50P,
-#' name1 = "Wild-type", color_number1 = 1,
-#' name2 = "Ser50Pro", color_number2 = 2)
+#' ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_mutant,
+#' name1 = "Wild-type", name2 = "Leu656Phe",
+#' resid1 = 500, resid2 = 525,
+#' color_number1 = 1, color_number2 = 2)
 #'
 #' ggstride::ssa_plot(ssa1, ssa2, name1 = "Wild-type", color_number1 = 1, name2, color_number2)
 #'
@@ -36,7 +44,7 @@
 # obtained by ssa()
 
 # ssa1: the ssa data frame calculated for trajectory 1
-# ssa2: the ssa data frame calculated for trajectory 1
+# ssa2: the ssa data frame calculated for trajectory 2
 # name1: name of your trajectory 1
 # name2: name of your trajectory 2
 # resid1: residue id of the first residue of the

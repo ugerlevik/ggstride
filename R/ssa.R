@@ -12,7 +12,10 @@
 #' as column names and STRIDE assignments of each residue as
 #' each row for each frame of the trajectory.
 #'
-#' @param pdb,traj,start,last
+#' @param pdb: the pdb file including same atoms with the trajectory. bio3d::read.pdb() should be used to read.
+#' @param traj: the trajectory file, xyz format of bio3d should be used. It could be any type of trajectory supported by bio3d.
+#' @param start: (default = 1) the number of first frame you want to analyze
+#' @param last: (default = number of frames in your trajectory) the number of last frame you want to analyze
 #'
 #' @return dataframe
 #'

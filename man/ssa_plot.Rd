@@ -4,10 +4,33 @@
 \alias{ssa_plot}
 \title{ggstride}
 \usage{
-ssa_plot(ssa1, ssa2, name1, name2, color_number1 = 1, color_number2 = 2)
+ssa_plot(
+  ssa1,
+  ssa2,
+  name1 = "Wild-type",
+  name2,
+  resid1 = as.numeric(gsub("\\\\D+", "", colnames(ssa1)[1])),
+  resid2 = as.numeric(gsub("\\\\D+", "", colnames(ssa1)[length(colnames(ssa1))])),
+  color_number1 = 1,
+  color_number2 = 2
+)
 }
 \arguments{
-\item{ssa1, ssa2, name1, color_number1, name2, color_number2}{}
+\item{ssa1:}{the ssa data frame calculated for trajectory 1, calculated by ggstride::ssa()}
+
+\item{ssa2:}{the ssa data frame calculated for trajectory 2, calculated by ggstride::ssa()}
+
+\item{name1:}{assign a name for your trajectory 1}
+
+\item{name2:}{assign a name for your trajectory 2}
+
+\item{resid1:}{residue id of the first residue of the region you want to visualize}
+
+\item{resid2:}{residue id of the last residue of the region you want to visualize}
+
+\item{color_number1:}{(between 1 and 7) select a color from jama palette of ggsci for the ssa of trajectory 1}
+
+\item{color_number2:}{(between 1 and 7) select a color from jama palette of ggsci for the ssa of trajectory 2}
 }
 \value{
 plot
@@ -18,9 +41,10 @@ secondary structures observed along the trajectories per residue by
 comparing the two ssa data frames obtained by ssa().
 }
 \examples{
-ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_S50P,
-name1 = "Wild-type", color_number1 = 1,
-name2 = "Ser50Pro", color_number2 = 2)
+ssa_plot(ssa1 = ssa_WT, ssa2 = ssa_mutant,
+name1 = "Wild-type", name2 = "Leu656Phe",
+resid1 = 500, resid2 = 525,
+color_number1 = 1, color_number2 = 2)
 
 ggstride::ssa_plot(ssa1, ssa2, name1 = "Wild-type", color_number1 = 1, name2, color_number2)
 

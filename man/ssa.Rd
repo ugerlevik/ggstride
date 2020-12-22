@@ -7,7 +7,13 @@
 ssa(pdb, traj, start = 1, last = nrow(traj))
 }
 \arguments{
-\item{pdb, traj, start, last}{}
+\item{pdb:}{the pdb file including same atoms with the trajectory. bio3d::read.pdb() should be used to read.}
+
+\item{traj:}{the trajectory file, xyz format of bio3d should be used. It could be any type of trajectory supported by bio3d.}
+
+\item{start:}{(default = 1) the number of first frame you want to analyze}
+
+\item{last:}{(default = number of frames in your trajectory) the number of last frame you want to analyze}
 }
 \value{
 dataframe
