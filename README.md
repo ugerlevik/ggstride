@@ -79,11 +79,6 @@ dev.off()
 ```
 
 ### References
-```{r}
-citation("ggstride")
-```
-Umut Gerlevik (2020). ggstride: An R Package for Protein 2D Structure Analysis and Visualization. R package version 1.0. https://github.com/ugerlevik/ggstride
-
 If you use this package, you should cite the studies below:
 
 STRIDE method (http://webclu.bio.wzw.tum.de/stride/):
