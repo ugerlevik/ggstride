@@ -5,13 +5,7 @@ Two functions are included in this package:
 __ssa()__ returns a data frame that contains residue identifiers (resname_chain_resid; e.g., MET_A_1) as column names
 and STRIDE assignments of each residue as each row for each frame of the trajectory.  
 
-__ssa_plot()__ returns a plot that contains percentage of secondary structures observed along the trajectories per residue 
-by comparing the two ssa data frames obtained by ssa()   
-
-## Requirements
-__R packages:__ "stringi", "readr", "bio3d", "ggplot2", "ggpubr", "ggsci", "reshape2"  
-__In system:__ STRIDE (http://webclu.bio.wzw.tum.de/stride/). Stride should be executable in your terminal as "stride".  
-
+__ssa_plot()__ returns a plot that contains percentage of secondary structures observed along the trajectories per residue by comparing the two ssa data frames obtained by ssa().   
 
 ## Installation
 You can install ggstride from GitHub with:
@@ -85,4 +79,22 @@ plot_ssa_520_530
 dev.off()
 ```
 
+## References:
+If you use this package, you should cite the studies below:
+
+STRIDE method (http://webclu.bio.wzw.tum.de/stride/):
+Frishman D, Argos P. Knowledge-based protein secondary structure assignment. Proteins. 1995 Dec;23(4):566-79. doi: 10.1002/prot.340230412. PMID: 8749853.
+
+STRIDE executables (https://www.ks.uiuc.edu/Research/vmd/):
+Humphrey W, Dalke A, Schulten K. VMD: visual molecular dynamics. J Mol Graph. 1996 Feb;14(1):33-8, 27-8. doi: 10.1016/0263-7855(96)00018-5. PMID: 8744570.
+
+bio3d R package (http://thegrantlab.org/bio3d/):
+Grant BJ, Rodrigues AP, ElSawy KM, McCammon JA, Caves LS. Bio3d: an R package for the comparative analysis of protein structures. Bioinformatics. 2006 Nov 1;22(21):2695-6. doi: 10.1093/bioinformatics/btl461. Epub 2006 Aug 29. PMID: 16940322.
+
+ggplot2 R package:
+Wickham H (2016). ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York. ISBN 978-3-319-24277-4, https://ggplot2.tidyverse.org.
+
+ggpubr R package:
+Alboukadel Kassambara (2020). ggpubr: 'ggplot2' Based Publication Ready Plots. R package version 0.3.0.
+https://CRAN.R-project.org/package=ggpubr
 
