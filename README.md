@@ -1,5 +1,5 @@
 # ggstride
-Protein secondary structure analysis (with STRIDE) and visualization (with ggplot2) in R.
+Protein secondary structure analysis for trajectories and visualization in R.
 
 Two functions are included in this package:  
 __ssa()__ returns a data frame that contains residue identifiers (resname_chain_resid; e.g., MET_A_1) as column names
