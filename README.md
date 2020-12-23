@@ -69,11 +69,11 @@ plot_ssa_520_530
 
 Get the pdf outputs:
 ```{r}
-pdf("example/ssa_plot_all.pdf", width = 20, height = 20)
+pdf("ssa_plot_all.pdf", width = 20, height = 20)
 plot_ssa_all
 dev.off()
 
-pdf("example/ssa_plot_520_530.pdf", width = 20, height = 20)
+pdf("ssa_plot_520_530.pdf", width = 20, height = 20)
 plot_ssa_520_530
 dev.off()
 ```
