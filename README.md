@@ -1,10 +1,11 @@
 # <img src="https://github.com/umutgerlevik/ggstride/blob/master/vignettes/logo.png?raw=true" align="left" height=65/> ggstride: An R Package for Protein 2D Structure Analysis and Visualization
 
-Two functions are included in this package:  
-__ssa()__ returns a data frame that contains residue identifiers (resname_chain_resid; e.g., MET_A_1) as column names
-and STRIDE assignments of each residue as each row for each frame of the trajectory.  
+Three functions are included in this package:  
+__ssa()__ returns a data frame that contains residue identifiers (resname_chain_resid; e.g., MET_A_1) as column names and STRIDE assignments of each residue as each row for each frame of the trajectory.  
 
-__ssa_plot()__ returns a plot that contains percentage of secondary structures observed along the trajectories per residue by comparing the two ssa data frames obtained by ssa().   
+__ssa_plot()__ returns a plot that contains percentage of secondary structures observed along the trajectories per residue by comparing the two ssa data frames obtained by ssa(). 
+
+__ssa.pdb()__ returns a data frame that contains residue identifiers (resname_chain_resid; e.g., MET_A_1) as column names and STRIDE assignments of each residue of the pdb as a row.
 
 ## Installation
 You can install ggstride from GitHub with:
