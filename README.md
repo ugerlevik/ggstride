@@ -1,4 +1,4 @@
-# <img src="https://github.com/umutgerlevik/ggstride/blob/master/vignettes/logo.png?raw=true" align="left" height=65/> ggstride: An R Package To Analyze and Visualize Protein 2D Structures
+# <img src="https://github.com/umutgerlevik/ggstride/blob/master/vignettes/logo.png?raw=true" align="left" height=65/> ggstride: An R Package To Analyze and Visualize 2D Structures of Proteins
 
 Three functions are included in this package:  
 __ssa()__ returns a data frame that contains residue identifiers (resname_chain_resid; e.g., MET_A_1) as column names and STRIDE assignments of each residue as each row for each frame of the trajectory.  
