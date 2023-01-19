@@ -81,7 +81,7 @@ dev.off()
 
 ### References
 
-Please cite this paper:
+Please cite this paper:  
 Gerlevik U, Ergoren MC, Sezerman OU, Temel SG. 2022. Structural analysis of M1AP variants associated with severely impaired spermatogenesis causing male infertility. PeerJ 10:e12947 https://doi.org/10.7717/peerj.12947
 
 
