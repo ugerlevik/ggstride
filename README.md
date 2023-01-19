@@ -80,7 +80,12 @@ dev.off()
 ```
 
 ### References
-If you use this package, you should also cite the studies below:
+
+Please cite this paper:
+Gerlevik U, Ergoren MC, Sezerman OU, Temel SG. 2022. Structural analysis of M1AP variants associated with severely impaired spermatogenesis causing male infertility. PeerJ 10:e12947 https://doi.org/10.7717/peerj.12947
+
+
+You might also cite the studies below:
 
 STRIDE method (http://webclu.bio.wzw.tum.de/stride/):
 Frishman D, Argos P. Knowledge-based protein secondary structure assignment. Proteins. 1995 Dec;23(4):566-79. doi: 10.1002/prot.340230412. PMID: 8749853.
